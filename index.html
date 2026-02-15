@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Büşra ❤️ Hakan</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+background: linear-gradient(to right, #f8cdda, #c2b6f5);
+overflow-x:hidden;
+color:#222;
+}
+
+/* ================= GİRİŞ ================= */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+padding:20px;
+}
+
+.music-btn{
+background:#ff4f9a;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+margin-bottom:25px;
+}
+
+.hero img{
+width:220px;
+height:220px;
+object-fit:cover;
+border-radius:50%;
+border:6px solid white;
+margin-bottom:20px;
+}
+
+.names{
+font-size:40px;
+font-weight:bold;
+}
+
+.heart{
+font-size:30px;
+margin:10px 0;
+color:#ff4f9a;
+}
+
+/* ================= KALPLER ================= */
+
+.heart-float{
+position:fixed;
+bottom:-50px;
+font-size:20px;
+animation: floatUp 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+/* ================= FOTO + SAYAÇ ================= */
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.round-img{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid #ff9acb;
+margin:20px 0;
+}
+
+.name-title{
+font-size:32px;
+font-weight:bold;
+margin-bottom:30px;
+}
+
+.counter-box{
+margin-top:30px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,0.35);
+backdrop-filter: blur(10px);
+}
+
+.counter-box h2{
+color:#ff2e88;
+margin-bottom:10px;
+}
+
+.days{
+font-size:60px;
+font-weight:bold;
+margin:15px 0;
+}
+
+/* ================= NOT ================= */
+
+.note{
+margin:60px 20px;
+padding:40px 20px;
+border-radius:30px;
+background: linear-gradient(to right, #ff77b3, #b27cff);
+color:white;
+text-align:center;
+}
+
+.note h2{
+margin-bottom:20px;
+font-size:28px;
+}
+
+.note p{
+font-size:18px;
+line-height:1.6;
+font-style:italic;
+}
+
+/* ================= ANI ALANI ================= */
+
+.memories{
+padding:40px 20px;
+}
+
+.memory-img{
+width:100%;
+border-radius:25px;
+margin-bottom:25px;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ================= MÜZİK ================= -->
+
+<audio id="music" src="muzik.mp3"></audio>
+
+<!-- ================= GİRİŞ ================= -->
+
+<section class="hero">
+
+<button class="music-btn" onclick="playMusic()">Müziği Başlat</button>
+
+<img src="foto1.jpg" alt="">
+
+<div class="names">Büşra</div>
+<div class="heart">🤍</div>
+<div class="names">Hakan</div>
+
+</section>
+
+<!-- ================= FOTO + SAYAÇ ================= -->
+
+<section class="section">
+
+<img src="hakan.jpg" class="round-img">
+<div class="name-title">Hakan</div>
+
+<img src="busra.heic" class="round-img">
+<div class="name-title">Büşra</div>
+
+<div class="counter-box">
+<h2>26 Ekim 2024</h2>
+<p>Aşk dolu</p>
+<div class="days" id="days"></div>
+<p>gün geçti...</p>
+</div>
+
+</section>
+
+<!-- ================= NOT ================= -->
+
+<section class="note">
+<h2>Küçüğüm’e 🤍🫶</h2>
+<p>
+Yüzümü güldüren küçük kızım benim iyi ki varsın seni çok ama çok seviyorum 🫶
+</p>
+</section>
+
+<!-- ================= ANI ALANI ================= -->
+
+<section class="memories">
+<img src="ani1.jpg" class="memory-img">
+<img src="ani2.HEIC" class="memory-img">
+<img src="ani3.heic" class="memory-img">
+<img src="ani4.JPG" class="memory-img">
+</section>
+
+<script>
+
+/* Müzik */
+function playMusic(){
+document.getElementById("music").play();
+}
+
+/* Sayaç */
+const startDate = new Date("2024-10-26");
+const today = new Date();
+const diffTime = today - startDate;
+const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+document.getElementById("days").innerText = diffDays;
+
+/* Kalpler */
+function createHeart(){
+const heart = document.createElement("div");
+heart.classList.add("heart-float");
+heart.innerHTML = "💗";
+heart.style.left = Math.random()*100 + "vw";
+heart.style.fontSize = (Math.random()*20 + 15) + "px";
+heart.style.animationDuration = (Math.random()*5 + 5) + "s";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,800);
+
+</script>
+
+</body>
+</html>
